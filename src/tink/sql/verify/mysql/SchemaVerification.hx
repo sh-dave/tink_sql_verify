@@ -1,10 +1,10 @@
-package tink.sql.verify;
+package tink.sql.verify.mysql;
 
 using tink.CoreApi;
 
 class SchemaVerification {
 	public static function run( db: Database, schema: String, driver: tink.sql.drivers.MySql ) : Promise<Bool> {
-		final infoSchema = new tink.sql.verify.InformationSchema(schema, driver);
+		final infoSchema = new InformationSchema(schema, driver);
 
 		return infoSchema.column.all().next(function( queriedRows ) {
 			var ok = true;
@@ -15,7 +15,7 @@ class SchemaVerification {
 					var found = false;
 
 					for (qr in queriedRows) {
-						if (tink.sql.verify.ColumnMatcher.match(db.name, tn, c, qr)) {
+						if (ColumnVerification.match(db.name, tn, c, qr)) {
 							found = true;
 							break;
 						}

@@ -1,4 +1,4 @@
-package tink.sql.verify;
+package tink.sql.verify.mysql;
 
 enum MatchResult {
 	Match;
@@ -6,7 +6,7 @@ enum MatchResult {
 	NotImplemented;
 }
 
-class ColumnMatcher {
+class ColumnVerification {
 	public static function match( dbn: String, tn: String, spec: tink.sql.Info.Column, parsed: Column ) : Bool {
 		return	parsed.TABLE_SCHEMA == dbn
 			&&	parsed.TABLE_NAME == tn

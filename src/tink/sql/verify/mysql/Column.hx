@@ -1,4 +1,4 @@
-package tink.sql.verify;
+package tink.sql.verify.mysql;
 
 import tink.sql.Types.LongText;
 

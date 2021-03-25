@@ -1,4 +1,4 @@
-package tink.sql.verify;
+package tink.sql.verify.mysql;
 
 enum abstract DataType(tink.sql.Types.LongText) {
 	final DTBigInt = 'bigint';
