@@ -23,7 +23,7 @@ class SchemaVerification {
 					}
 
 					if (!found) {
-						trace('verified column: ${db.name}.${tn}.${c.name}');
+						trace('unverified column: ${db.name}.${tn}.${c.name}');
 						ok = false;
 					}
 				}
