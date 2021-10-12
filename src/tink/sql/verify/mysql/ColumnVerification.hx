@@ -24,7 +24,7 @@ class ColumnVerification {
 				NotImplemented;
 
 			case DInt(Tiny, signed, autoIncrement, byDefault):
-				parsed.DATA_TYPE == DTBigInt ? Match : NoMatch;
+				parsed.DATA_TYPE == DTTinyInt ? Match : NoMatch;
 
 			case DInt(Small, signed, autoIncrement, byDefault):
 				parsed.DATA_TYPE == DTSmallInt ? Match : NoMatch;
@@ -47,7 +47,7 @@ class ColumnVerification {
 				NotImplemented;
 
 			case DText(Default, byDefault):
-				NotImplemented;
+				parsed.DATA_TYPE == DTText ? Match : NoMatch;
 
 			case DText(Medium, byDefault):
 				parsed.DATA_TYPE == DTMediumText ? Match : NoMatch;

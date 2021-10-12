@@ -5,6 +5,7 @@ enum abstract DataType(tink.sql.Types.LongText) {
 	// final Bool = 'bool';
 	final DTTinyInt = 'tinyint';
 	final DTInt = 'int';
+	final DTText = 'text';
 	final DTLongText = 'longtext';
 	final DTMediumText = 'mediumtext';
 	final DTSmallInt = 'smallint';
