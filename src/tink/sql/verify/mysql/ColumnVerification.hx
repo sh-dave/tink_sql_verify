@@ -4,18 +4,27 @@ enum MatchResult {
 	Match;
 	NoMatch;
 	NotImplemented;
+
+	DifferentSchema;
+	DifferentTable;
+	DifferentColumn;
 }
 
 class ColumnVerification {
-	public static function match( dbn: String, tn: String, spec: tink.sql.Info.Column, parsed: Column ) : Bool {
-		return	parsed.TABLE_SCHEMA == dbn
-			&&	parsed.TABLE_NAME == tn
-			&&	parsed.COLUMN_NAME == spec.name
-			&&	switch matchType(spec.type, parsed) {
-					case Match: true;
-					case NoMatch: false;
-					case NotImplemented: false;
-			}
+	public static function match( dbn: String, tn: String, spec: tink.sql.Info.Column, parsed: Column ) : MatchResult {
+		if (parsed.TABLE_SCHEMA != dbn) {
+			return DifferentSchema;
+		}
+
+		if (parsed.TABLE_NAME != tn) {
+			return DifferentTable;
+		}
+
+		if (parsed.COLUMN_NAME != spec.name) {
+			return DifferentColumn;
+		}
+
+		return matchType(spec.type, parsed);
 	}
 
 	public static function matchType( type: tink.sql.Info.DataType, parsed: Column ) : MatchResult {
